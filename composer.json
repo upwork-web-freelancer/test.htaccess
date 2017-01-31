@@ -1,0 +1,14 @@
+{
+    "name": "gmargaryan/test-htaccess",
+    "authors": [
+        {
+            "name": "Web Developer",
+            "email": "upwork.web.freelancer@gmail.com"
+        }
+    ],
+    "require": {
+    },
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "^119.0"
+    }
+}

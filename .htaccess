@@ -1,0 +1,28 @@
+Options +FollowSymLinks +Includes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteBase /
+
+    RewriteCond %{REQUEST_URI} ^.*\.php$
+    RewriteCond %{REQUEST_URI} !^/sites/site-.*$
+    RewriteRule ^(.*)\.php$ /$1 [L,R=301]
+
+    RewriteCond %{HTTP_HOST} ^.*site-one.*$
+    RewriteCond %{REQUEST_URI} !^/sites/site-one.*$
+    RewriteCond %{REQUEST_URI} !^/app.*$
+    RewriteRule ^(.*)$ /sites/site-one/$1 [P,R=301]
+
+    RewriteCond %{HTTP_HOST} ^.*site-two.*$
+    RewriteCond %{REQUEST_URI} !^/sites/site-two.*$
+    RewriteCond %{REQUEST_URI} !^/app.*$
+    RewriteRule ^(.*)$ /sites/site-two/$1 [P,R=301]
+
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.*)$ /$1\.php [P,R=301]
+
+</IfModule>
+
+# big crash from our front web controller
+ErrorDocument 500 "<h2>Application error</h2>application failed to start properly"
