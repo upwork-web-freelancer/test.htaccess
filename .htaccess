@@ -9,6 +9,9 @@ Options +FollowSymLinks +Includes
     RewriteCond %{REQUEST_URI} !^/sites/site-.*$
     RewriteRule ^(.*)\.php$ /$1 [L,R=301]
 
+    RewriteCond %{REQUEST_URI} ^.*/index$
+    RewriteRule ^(.*)index$ /$1 [L,R=301]
+
     RewriteCond %{HTTP_HOST} ^.*site-one.*$
     RewriteCond %{REQUEST_URI} !^/sites/site-one.*$
     RewriteCond %{REQUEST_URI} !^/app.*$
